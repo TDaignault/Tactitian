@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createModel } from '../../store/actions/modelActions'
 
 class CreateModel extends Component {
     state = {
@@ -14,7 +16,7 @@ class CreateModel extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.createModel(this.state)
     }
     
     render() {
@@ -40,4 +42,10 @@ class CreateModel extends Component {
     }
 }
 
-export default CreateModel
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createModel: (project) => dispatch(createModel(project))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateModel)

@@ -1,13 +1,14 @@
 import React from 'react'
 import ModelSummary from './ModelSummary'
 
-const ModelList = () => {
+const ModelList = ({models}) => {
     return (
         <div className="project-list section">
-            <ModelSummary/>
-            <ModelSummary/>
-            <ModelSummary/>
-            <ModelSummary/>
+            {models && models.map(model => {
+                return (
+                    <ModelSummary model={model} key={model.id}/>
+                )
+            })}
         </div>
     )
 }
